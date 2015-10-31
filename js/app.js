@@ -11,11 +11,18 @@ $(document).ready(function(){
 		var userNum = parseInt(process_string, 10); // convert string to integer
 		console.log("user input is " + userNum); // display converted string
 		$("#userGuess").val('');
-		if (userNum > 100 || userNum < 1) {
+
+		if ( isNaN( userNum )) {
+			// test if user input is NaN
+			console.log("user input, " + userNum + " is not valid");
+			$('#feedback').remove();
+			$('.game').prepend('<h2 id="feedback">Guess again. Please enter a whole number between 1 and 100.</h2>'); }
+
+		else if (userNum > 100 || userNum < 1) {
 			// validate that the user guess is between 1 and 100
 			console.log("user input, " + userNum + " is not valid");
 			$('#feedback').remove();
-			$('.game').prepend('<h2 id="warning">please enter a whole number between 1 and 100</h2>');
+			$('.game').prepend('<h2 id="feedback">Guess again. Please enter a whole number between 1 and 100.</h2>');
 		} else {
 			console.log("user number, " + userNum + " is good to go");
 			playGame(userNum);
@@ -23,25 +30,22 @@ $(document).ready(function(){
 	}
 
 	function playGame() {
-		var randNum = Math.floor(Math.random() * 101); // create random number between 1 and 100
-		console.log("random number is, " + randNum);  // display random number in console
+		var randNum = Math.floor(Math.random() * 100 +1); // create random number between 1 and 100
+		console.log("random number is: " + randNum);  // display random number in console
 		if (userNum) {} else if (true) {} else{};{};
 
 	}
 
 	function newGame() {
 		$("#userGuess").val(''); // reset form field
-	}
-
-	function resetFeedback() {
-		$().remove(); // reset user feedback
-	}
-
-	function resetForm(){
-		$("#userGuess").val(''); // reset form field
+		var userNum = 0;
+		var randNum = 0;
+		$('#feedback').remove();
+		$('.game').prepend('<h2 id="feedback">Make your guess</h2>');
 	}
 
 	$('form').on('submit', processInput);
+	$('.new').on('click', newGame);
 
 // grab user's input from form --DONE
 // convert raw value to integer --DONE
