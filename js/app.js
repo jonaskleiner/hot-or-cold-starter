@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-	var userNum = 0; // declare user var first so it is avail inside/outside functions.
+	var userNum = 0; // declare vars first so it is avail inside/outside functions.
 	var randNum = 0;
 
 	function processInput() {
@@ -14,7 +14,8 @@ $(document).ready(function(){
 		if (userNum > 100 || userNum < 1) {
 			// validate that the user guess is between 1 and 100
 			console.log("user input, " + userNum + " is not valid");
-			$('#guessList').append('<li id="warning">please enter a whole number between 1 and 100</li>');
+			$('#feedback').remove();
+			$('.game').prepend('<h2 id="warning">please enter a whole number between 1 and 100</h2>');
 		} else {
 			console.log("user number, " + userNum + " is good to go");
 			playGame(userNum);
@@ -24,11 +25,16 @@ $(document).ready(function(){
 	function playGame() {
 		var randNum = Math.floor(Math.random() * 101); // create random number between 1 and 100
 		console.log("random number is, " + randNum);  // display random number in console
+		if (userNum) {} else if (true) {} else{};{};
 
 	}
 
+	function newGame() {
+		$("#userGuess").val(''); // reset form field
+	}
+
 	function resetFeedback() {
-		$('#warning').remove(); // reset user feedback
+		$().remove(); // reset user feedback
 	}
 
 	function resetForm(){
