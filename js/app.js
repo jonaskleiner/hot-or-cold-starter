@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
 	var userNum = 0; // declare vars first so it is avail inside/outside functions.
-	var randNum = 0;
+	var randNum = 0; // declare vars 
 
 	function processInput(event) {
 		event.preventDefault(); // prevents form from refreshing page
@@ -27,21 +27,27 @@ $(document).ready(function(){
 			console.log("user number, " + userNum + " is good to go");
 			playGame(userNum);
 		};
-		playGame(userNum);
+		//playGame(userNum);
 	}
 
 	function playGame(val) {
 		var userNum = val;
 		var randNum = Math.floor(Math.random() * 100 +1); // create random number between 1 and 100
-		console.log("random number is: " + randNum);  // display random number in console
 		console.log("passed user number is: " + userNum);  // display random number in console
+		console.log("random number is: " + randNum);  // display random number in console
 		if (userNum === randNum) {
 			$('#feedback').remove();
 			$('.game').prepend('<h2 id="feedback">Winner winner chicken dinner.</h2>');
-		} else if (true) {
+		} else if (userNum !== randNum) {
+			$('#feedback').remove();
+			$('.game').prepend('<h2 id="feedback">try again pal.</h2>');
+			// here is where you should add the additional logic. If Between 30 and 50, “cold” ,Between 20 and 30, "warm", etc
+			// currently the game logic only checks to see if the user and random nums are equal or not. 
+			// Note: the game does not reset at this point. The game is accepting new inputs. 
+			// It needs to prevent reset of randNum for the game to work and properly compare the 2 vars.
+			// currently the function newGame is called only when the top right button is pressed
 
-		} else{};{};
-
+		}
 	}
 
 	function newGame() {
