@@ -27,11 +27,14 @@ $(document).ready(function(){
 			console.log("user number, " + userNum + " is good to go");
 			playGame(userNum);
 		};
+		playGame(userNum);
 	}
 
-	function playGame() {
+	function playGame(val) {
+		var userNum = val;
 		var randNum = Math.floor(Math.random() * 100 +1); // create random number between 1 and 100
 		console.log("random number is: " + randNum);  // display random number in console
+		console.log("passed user number is: " + userNum);  // display random number in console
 		if (userNum === randNum) {
 			$('#feedback').remove();
 			$('.game').prepend('<h2 id="feedback">Winner winner chicken dinner.</h2>');
@@ -54,9 +57,10 @@ $(document).ready(function(){
 
 // Clicking “New Game” should trigger the JavaScript function that starts a new game without refreshing or reloading page.  --DONE
 // grab user's input from form --DONE
-// convert raw value to integer --DONE
+// convert raw value of user input to integer --DONE
 // write code that ensures that the user has supplied a numeric input between 1 and 100  --DONE
 // generate secret number between 1 and 100   --DONE
+// pass userNum var from function processInput() to function playGame()
 // user feedback --> 50 or further away from the secret number, “Ice cold”
 // user feedback --> Between 30 and 50, “cold”
 // user feedback --> Between 20 and 30, "warm"
