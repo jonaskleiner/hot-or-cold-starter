@@ -4,7 +4,7 @@ $(document).ready(function(){
 	var userNum = 0; // declare vars first so it is avail inside/outside functions.
 	var randNum = 0;
 
-	function processInput() {
+	function processInput(event) {
 		event.preventDefault(); // prevents form from refreshing page
 		var process_string = $("#userGuess").val();  // raw form value
 		console.log(process_string); // display raw form value in console
@@ -32,7 +32,12 @@ $(document).ready(function(){
 	function playGame() {
 		var randNum = Math.floor(Math.random() * 100 +1); // create random number between 1 and 100
 		console.log("random number is: " + randNum);  // display random number in console
-		if (userNum) {} else if (true) {} else{};{};
+		if (userNum === randNum) {
+			$('#feedback').remove();
+			$('.game').prepend('<h2 id="feedback">Winner winner chicken dinner.</h2>');
+		} else if (true) {
+
+		} else{};{};
 
 	}
 
@@ -47,6 +52,7 @@ $(document).ready(function(){
 	$('form').on('submit', processInput);
 	$('.new').on('click', newGame);
 
+// Clicking “New Game” should trigger the JavaScript function that starts a new game without refreshing or reloading page.  --DONE
 // grab user's input from form --DONE
 // convert raw value to integer --DONE
 // write code that ensures that the user has supplied a numeric input between 1 and 100  --DONE
@@ -57,7 +63,7 @@ $(document).ready(function(){
 // user feedback --> Between 10 and 20, "hot" 
 // user feedback --> Between 1 and 10, “very hot”
 // track # of guesses until they guess the number
-// Clicking “New Game” should trigger the JavaScript function that starts a new game without refreshing or reloading page.
+
 	
 	/*--- Display information modal box ---*/
   	$(".what").click(function(){
